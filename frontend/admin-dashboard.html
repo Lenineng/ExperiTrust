@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExperiTrust — Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dash-body">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <a class="logo dash-logo" href="index.html"><img class="logo-icon" src="icons/Logo.png" alt="ExperiTrust logo" />ExperiTrust</a>
+        <div class="dash-user">
+          <div class="employer-initials">AD</div>
+          <a class="dash-logout" href="login.html">LogOut</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <section class="dash-hero">
+        <h1>Admin Dashboard</h1>
+        <p>Verify experiences and manage platform settings</p>
+
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span>Pending Verifications</span>
+            <strong>3</strong>
+            <small>awaiting review</small>
+          </div>
+          <div class="dash-stat">
+            <span>Total Students</span>
+            <strong>3</strong>
+            <small>registered users</small>
+          </div>
+          <div class="dash-stat">
+            <span>Verified Today</span>
+            <strong>5</strong>
+            <small>experiences verified</small>
+          </div>
+          <div class="dash-stat">
+            <span>Active Jobs</span>
+            <strong>12</strong>
+            <small>job postings</small>
+          </div>
+        </div>
+      </section>
+
+      <nav class="dash-tabs">
+        <button class="dash-tab active" data-tab="overview" data-icon="icons/overview.png" data-icon-active="icons/overview%202.png">
+          <img class="tab-icon" src="icons/overview%202.png" alt="" />
+          Overview
+        </button>
+        <button class="dash-tab" data-tab="pending" data-icon="icons/pending%20..png" data-icon-active="icons/pending%202.png">
+          <img class="tab-icon" src="icons/pending%20..png" alt="" />
+          Pending Verifications
+        </button>
+        <button class="dash-tab" data-tab="verified" data-icon="icons/verified%20..png" data-icon-active="icons/verified%202.png">
+          <img class="tab-icon" src="icons/verified%20..png" alt="" />
+          Verified Experiences
+        </button>
+        <button class="dash-tab" data-tab="students" data-icon="icons/all%20students%20..png" data-icon-active="icons/all%20students%202.png">
+          <img class="tab-icon" src="icons/all%20students%20..png" alt="" />
+          All Students
+        </button>
+      </nav>
+
+      <section class="dash-panel dash-section active" data-section="overview">
+        <div class="dash-panel-left">
+          <h3>Platform Statistics</h3>
+          <div class="dash-info">
+            <div><span>Total Experiences Submitted:</span> 127</div>
+            <div><span>Verified Experiences:</span> 98</div>
+            <div><span>Rejected Experiences:</span> 12</div>
+            <div><span>Pending Review:</span> 3</div>
+            <div><span>Average Processing Time:</span> 2.3 days</div>
+          </div>
+        </div>
+        <div class="dash-divider"></div>
+        <div class="dash-panel-right">
+          <h3>Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <span class="activity-icon">
+                <img src="icons/interview%20scheduled%20.%20recent%20activity.png" alt="" />
+              </span>
+              <div>
+                <strong>Verified internship experience</strong>
+                <small>David Kim · 1 hour ago</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon orange">
+                <img src="icons/job%20post.%20recent%20activity.png" alt="" />
+              </span>
+              <div>
+                <strong>New experience submitted</strong>
+                <small>Emily Rodriguez · 2 hours ago</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon green">
+                <img src="icons/new%20applicant.recent%20activity.png" alt="" />
+              </span>
+              <div>
+                <strong>New student registered</strong>
+                <small>3 hours ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dash-placeholder admin-list dash-section" data-section="pending">
+        <div class="dash-section-header">
+          <h2>Pending Verifications</h2>
+        </div>
+
+        <article class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h4>Mobile App Development</h4>
+              <p>Sarah Johnson · Stanford University</p>
+            </div>
+            <span class="status-pill pending">pending</span>
+          </div>
+          <div class="admin-meta">
+            <span><img class="meta-icon dark" src="icons/my%20experience.png" alt="" /> Personal Project</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> 10 weeks</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Submitted: 2026-01-01</span>
+          </div>
+          <div class="admin-block">
+            <strong>Description:</strong>
+            <p>Developed a mobile app for local businesses to manage inventory and sales. Built with React Native and Firebase.</p>
+          </div>
+          <div class="admin-block">
+            <strong>Evidence Provided:</strong>
+            <p>GitHub repository, app screenshots, demo video</p>
+          </div>
+          <div class="admin-actions">
+            <button class="dash-btn primary" data-modal="verify-modal">Review &amp; Verify</button>
+            <button class="dash-btn outline">View Student Profile</button>
+          </div>
+        </article>
+
+        <article class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h4>AI Research Project</h4>
+              <p>Michael Chen · MIT</p>
+            </div>
+            <span class="status-pill pending">pending</span>
+          </div>
+          <div class="admin-meta">
+            <span><img class="meta-icon" src="icons/my%20experience.png" alt="" /> Academic Project</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> 16 weeks</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Submitted: 2026-01-02</span>
+          </div>
+          <div class="admin-block">
+            <strong>Description:</strong>
+            <p>Research project on machine learning algorithms for image recognition. Published paper in university journal.</p>
+          </div>
+          <div class="admin-block">
+            <strong>Evidence Provided:</strong>
+            <p>Research paper, presentation slides, code repository</p>
+          </div>
+          <div class="admin-actions">
+            <button class="dash-btn primary" data-modal="verify-modal">Review &amp; Verify</button>
+            <button class="dash-btn outline">View Student Profile</button>
+          </div>
+        </article>
+
+        <article class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h4>Community Center Volunteer</h4>
+              <p>Emily Rodriguez · UC Berkeley</p>
+            </div>
+            <span class="status-pill pending">pending</span>
+          </div>
+          <div class="admin-meta">
+            <span><img class="meta-icon" src="icons/my%20experience.png" alt="" /> Volunteering</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> 120 hours</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Submitted: 2026-01-01</span>
+          </div>
+          <div class="admin-block">
+            <strong>Description:</strong>
+            <p>Volunteered at local community center teaching coding to underprivileged children.</p>
+          </div>
+          <div class="admin-block">
+            <strong>Evidence Provided:</strong>
+            <p>Volunteer certificate, supervisor letter, photos</p>
+          </div>
+          <div class="admin-actions">
+            <button class="dash-btn primary" data-modal="verify-modal">Review &amp; Verify</button>
+            <button class="dash-btn outline">View Student Profile</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="dash-placeholder admin-list dash-section" data-section="verified">
+        <div class="dash-section-header">
+          <h2>Recently Verified Applicants</h2>
+        </div>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Web Development Internship</h4>
+              <p>David Kim</p>
+            </div>
+            <div class="right-stack">
+              <span class="exp-years">1 year</span>
+              <span class="status-pill verified">Verified</span>
+            </div>
+          </div>
+            <div class="job-meta">
+              <span><img class="meta-icon dark" src="icons/my%20experience.png" alt="" /> Internship</span>
+              <span><img class="meta-icon dark" src="icons/time.png" alt="" /> 3 months</span>
+              <span><img class="meta-icon dark" src="icons/calendar.png" alt="" /> Verified: 2026-01-28</span>
+            </div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Capstone Project</h4>
+              <p>Lisa Wang</p>
+            </div>
+            <div class="right-stack">
+              <span class="exp-years">0.75 years</span>
+              <span class="status-pill verified">Verified</span>
+            </div>
+          </div>
+            <div class="job-meta">
+              <span><img class="meta-icon dark" src="icons/my%20experience.png" alt="" /> Academic Project</span>
+              <span><img class="meta-icon dark" src="icons/time.png" alt="" /> 12 weeks</span>
+              <span><img class="meta-icon dark" src="icons/calendar.png" alt="" /> Verified: 2026-01-27</span>
+            </div>
+        </article>
+      </section>
+
+      <section class="dash-placeholder admin-list dash-section" data-section="students">
+        <div class="dash-section-header">
+          <h2>All Students</h2>
+          <label class="search-wrap">
+            <img class="tab-icon" src="icons/search.png" alt="" />
+            <input class="job-search" type="search" placeholder="Search Students" />
+          </label>
+        </div>
+
+        <article class="student-card">
+          <div class="student-header">
+            <div class="avatar">SJ</div>
+            <div>
+              <h4>Sarah Johnson</h4>
+              <p>Stanford University · Computer Science</p>
+              <p>sarah.johnson@university.edu</p>
+            </div>
+          </div>
+            <div class="student-right">
+              <span class="exp-years">2.5 years</span>
+              <div class="student-counts">
+                <span class="verified-count">2 verified</span>
+                <span class="pending-count">1 pending</span>
+              </div>
+            </div>
+          <div class="student-footer">
+            <span>Registered: 2026-01-08</span>
+          </div>
+        </article>
+
+        <article class="student-card">
+          <div class="student-header">
+            <div class="avatar">MC</div>
+            <div>
+              <h4>Michael Chen</h4>
+              <p>MIT · Software Engineering</p>
+              <p>michael.chen@university.edu</p>
+            </div>
+          </div>
+            <div class="student-right">
+              <span class="exp-years">2 years</span>
+              <div class="student-counts">
+                <span class="verified-count">3 verified</span>
+                <span class="pending-count">1 pending</span>
+              </div>
+            </div>
+          <div class="student-footer">
+            <span>Registered: 2026-01-08</span>
+          </div>
+        </article>
+
+        <article class="student-card">
+          <div class="student-header">
+            <div class="avatar">ER</div>
+            <div>
+              <h4>Emily Rodriguez</h4>
+              <p>UC Berkeley · Computer Science</p>
+              <p>emily.rodriguez@university.edu</p>
+            </div>
+          </div>
+            <div class="student-right">
+              <span class="exp-years">1 year</span>
+              <div class="student-counts">
+                <span class="verified-count">2 verified</span>
+                <span class="pending-count">1 pending</span>
+              </div>
+            </div>
+          <div class="student-footer">
+            <span>Registered: 2026-01-08</span>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="verify-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Verify Experience</h2>
+        <div class="modal-rule"></div>
+        <div class="verify-block">
+          <h3>Mobile App Development</h3>
+          <p>Sarah Johnson • Stanford University</p>
+        </div>
+        <div class="job-detail-grid">
+          <div>
+            <span>Type:</span>
+            <strong>Personal Project</strong>
+          </div>
+          <div>
+            <span>Duration:</span>
+            <strong>10 weeks</strong>
+          </div>
+        </div>
+        <div class="job-detail-desc">
+          <h4>Description:</h4>
+          <p>Developed a mobile app for local businesses to manage inventory and sales. Built with React Native and Firebase.</p>
+        </div>
+        <div class="job-detail-desc">
+          <h4>Evidence:</h4>
+          <p>GitHub repository, app screenshots, demo video</p>
+        </div>
+        <label>Experience Equivalence (years)</label>
+        <input class="modal-input" type="text" placeholder="e.g 0.5" />
+        <label>Admin Notes (Optional)</label>
+        <textarea class="modal-input" rows="4" placeholder="Add any notes about this verification"></textarea>
+        <div class="modal-actions">
+          <button class="modal-primary" type="button">Verify experience</button>
+          <button class="modal-outline danger" type="button">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

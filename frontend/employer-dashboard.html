@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExperiTrust — Employer Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dash-body">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <a class="logo dash-logo" href="index.html"><img class="logo-icon" src="icons/Logo.png" alt="ExperiTrust logo" />ExperiTrust</a>
+        <div class="dash-user">
+          <div class="employer-initials">TI</div>
+          <a class="dash-logout" href="login.html">LogOut</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <section class="dash-hero">
+        <h1>Employer Dashboard</h1>
+        <p>Manage job postings and review qualified candidates</p>
+
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span>Active Jobs</span>
+            <strong>2</strong>
+            <small>currently hiring</small>
+          </div>
+          <div class="dash-stat">
+            <span>Total Applicants</span>
+            <strong>42</strong>
+            <small>across all jobs</small>
+          </div>
+          <div class="dash-stat">
+            <span>Shortlisted</span>
+            <strong>8</strong>
+            <small>candidates</small>
+          </div>
+          <div class="dash-stat">
+            <span>Interviews</span>
+            <strong>8</strong>
+            <small>scheduled</small>
+          </div>
+        </div>
+      </section>
+
+      <nav class="dash-tabs">
+        <button class="dash-tab active" data-tab="overview" data-icon="icons/overview.png" data-icon-active="icons/overview%202.png">
+          <img class="tab-icon" src="icons/overview%202.png" alt="" />
+          Overview
+        </button>
+        <button class="dash-tab" data-tab="jobs" data-icon="icons/job%20opportunities.png" data-icon-active="icons/job%20opportunities%202.png">
+          <img class="tab-icon" src="icons/job%20opportunities.png" alt="" />
+          My Jobs Posts
+        </button>
+        <button class="dash-tab" data-tab="applicants" data-icon="icons/applicants.png" data-icon-active="icons/applicants%202.png">
+          <img class="tab-icon" src="icons/applicants.png" alt="" />
+          Applicants
+        </button>
+        <button class="dash-tab" data-tab="search" data-icon="icons/search.png" data-icon-active="icons/Search%202.png">
+          <img class="tab-icon" src="icons/search.png" alt="" />
+          Search Candidates
+        </button>
+      </nav>
+
+      <section class="dash-panel dash-section active" data-section="overview">
+        <div class="dash-panel-left">
+          <h3>Company Information</h3>
+          <div class="dash-info">
+            <div><span>Company Name:</span> Tech Innovations Inc.</div>
+            <div><span>Industry:</span> Technology</div>
+            <div><span>Location:</span> Kigali-Rwanda</div>
+            <div><span>Email:</span> hr@techinnovations.com</div>
+          </div>
+          <div class="dash-actions">
+            <button class="dash-btn primary" data-modal="post-job-modal">+ Post New Job</button>
+            <button class="dash-btn outline" data-modal="edit-company-modal">Edit Company Profile</button>
+          </div>
+        </div>
+        <div class="dash-divider"></div>
+        <div class="dash-panel-right">
+          <h3>Recent Activity</h3>
+          <div class="activity-list">
+            <div class="activity-item">
+              <span class="activity-icon">
+                <img src="icons/new%20applicant.recent%20activity.png" alt="" />
+              </span>
+              <div>
+                <strong>New applicant for Junior Developer</strong>
+                <small>2 hours ago</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon orange">
+                <img src="icons/job%20post.%20recent%20activity.png" alt="" />
+              </span>
+              <div>
+                <strong>Job post published successfully</strong>
+                <small>1 day ago</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-icon green">
+                <img src="icons/interview%20scheduled%20.%20recent%20activity.png" alt="" />
+              </span>
+              <div>
+                <strong>Interview scheduled with Emily Rodriguez</strong>
+                <small>2 days ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dash-placeholder jobs dash-section" data-section="jobs">
+        <div class="dash-section-header">
+          <h2>Posted Jobs</h2>
+          <button class="dash-btn primary small" data-modal="post-job-modal">+ Post New Job</button>
+        </div>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Junior Software Developer</h4>
+            </div>
+            <span class="status-pill verified">Verified</span>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Kigali</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Full-time</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 1.5 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Posted: 2026-01-10</span>
+            <span class="success-text">24 applicants</span>
+            <div class="job-actions">
+              <button class="link-btn" data-modal="edit-job-modal">Edit</button>
+              <button class="link-btn danger">Close</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Frontend Developer Intern</h4>
+            </div>
+            <span class="status-pill verified">Verified</span>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Remote</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Internship</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 0.5 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Posted: 2026-01-12</span>
+            <span class="success-text">18 applicants</span>
+            <div class="job-actions">
+              <button class="link-btn" data-modal="edit-job-modal">Edit</button>
+              <button class="link-btn danger">Close</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Senior Backend Engineer</h4>
+            </div>
+            <span class="status-pill verified">Verified</span>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Kigali</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Full-time</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 2 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Posted: 2026-01-10</span>
+            <span class="success-text">31 applicants</span>
+            <div class="job-actions">
+              <button class="link-btn" data-modal="edit-job-modal">Edit</button>
+              <button class="link-btn danger">Close</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="dash-placeholder applications dash-section" data-section="applicants">
+        <div class="dash-section-header">
+          <h2>All Applicants</h2>
+          <button class="filter-btn">All Categories</button>
+        </div>
+
+        <article class="applicant-card">
+          <div class="applicant-header">
+            <div class="avatar">SJ</div>
+            <div>
+              <h4>Sarah Johnson</h4>
+              <p>Stanford University · Computer Science</p>
+              <p>Applied for: <strong>Junior Software Developer</strong></p>
+            </div>
+          </div>
+          <div class="applicant-right">
+            <span class="exp-years">2.5 years</span>
+            <span class="status-pill review">Under Review</span>
+          </div>
+          <div class="applicant-breakdown">
+            <div><span>Academic:</span><strong>0.75 years</strong></div>
+            <div><span>Volunteering:</span><strong>0.5 years</strong></div>
+            <div><span>Internships:</span><strong>1 years</strong></div>
+            <div><span>Personal:</span><strong>0.25 years</strong></div>
+          </div>
+          <div class="applicant-footer">
+            <span>Applied: 2026-01-12</span>
+            <div class="applicant-actions">
+              <button class="modal-primary small" data-modal="schedule-modal">Schedule Interview</button>
+              <button class="modal-outline small danger">Reject</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="applicant-card">
+          <div class="applicant-header">
+            <div class="avatar">MC</div>
+            <div>
+              <h4>Michael Chen</h4>
+              <p>MIT · Software Engineering</p>
+              <p>Applied for: <strong>Junior Software Developer</strong></p>
+            </div>
+          </div>
+          <div class="applicant-right">
+            <span class="exp-years">2 years</span>
+            <span class="status-pill scheduled">Shortlisted</span>
+          </div>
+          <div class="applicant-breakdown">
+            <div><span>Academic:</span><strong>1 years</strong></div>
+            <div><span>Volunteering:</span><strong>0.25 years</strong></div>
+            <div><span>Internships:</span><strong>0.5 years</strong></div>
+            <div><span>Personal:</span><strong>0.25 years</strong></div>
+          </div>
+          <div class="applicant-footer">
+            <span>Applied: 2026-01-12</span>
+            <div class="applicant-actions">
+              <button class="modal-primary small" data-modal="schedule-modal">Schedule Interview</button>
+              <button class="modal-outline small danger">Reject</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="applicant-card">
+          <div class="applicant-header">
+            <div class="avatar">ER</div>
+            <div>
+              <h4>Emily Rodriguez</h4>
+              <p>UC Berkeley · Computer Science</p>
+              <p>Applied for: <strong>Frontend Developer Intern</strong></p>
+            </div>
+          </div>
+          <div class="applicant-right">
+            <span class="exp-years">1 year</span>
+            <span class="status-pill pending">Interview Scheduled</span>
+          </div>
+          <div class="applicant-breakdown">
+            <div><span>Academic:</span><strong>0.5 years</strong></div>
+            <div><span>Volunteering:</span><strong>0.25 years</strong></div>
+            <div><span>Internships:</span><strong>0 years</strong></div>
+            <div><span>Personal:</span><strong>0.25 years</strong></div>
+          </div>
+          <div class="applicant-footer">
+            <span>Applied: 2026-01-12</span>
+            <div class="applicant-actions">
+              <button class="modal-primary small" data-modal="schedule-modal">Schedule Interview</button>
+              <button class="modal-outline small danger">Reject</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="dash-placeholder search dash-section" data-section="search">
+        <div class="search-card">
+          <h3>Search Candidates</h3>
+          <div class="search-grid">
+            <input type="text" placeholder="Field of Study" />
+            <input type="text" placeholder="University...." />
+            <input type="text" placeholder="Min experience (Years)...." />
+            <button class="search-action" type="button">
+              <img class="tab-icon" src="icons/search.png" alt="" />
+            </button>
+          </div>
+          <div class="search-empty">
+            <div class="search-circle">
+              <img class="tab-icon" src="icons/search.png" alt="" />
+            </div>
+            <p>Enter search criteria to find qualified candidates</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="post-job-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Post New Job</h2>
+        <div class="modal-rule"></div>
+        <form class="modal-form">
+          <label>Job Title</label>
+          <input type="text" placeholder="e.g web development project" />
+          <div class="modal-grid">
+            <div>
+              <label>Job Type</label>
+              <select>
+                <option>Full Time</option>
+                <option>Part Time</option>
+                <option>Internship</option>
+                <option>Contract</option>
+              </select>
+            </div>
+            <div>
+              <label>Location</label>
+              <input type="text" placeholder="e.g Kigali-RWANDA" />
+            </div>
+          </div>
+          <label>Required experience (years)</label>
+          <input type="text" placeholder="e.g 1.5" />
+          <label>Job Description</label>
+          <textarea rows="4" placeholder="Describe Your role, responsibilities, and requirements..."></textarea>
+          <div class="modal-actions">
+            <button class="modal-primary" type="submit">Post Job</button>
+            <button class="modal-outline" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="edit-company-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Edit Company Profile</h2>
+        <div class="modal-rule"></div>
+        <form class="modal-form">
+          <label>Company Name</label>
+          <input type="text" placeholder="Tech Innovation Inc." />
+          <label>Industry</label>
+          <input type="text" placeholder="Technology" />
+          <label>Location</label>
+          <input type="text" placeholder="Kigali-Rwanda" />
+          <div class="modal-actions">
+            <button class="modal-primary" type="submit">Save Changes</button>
+            <button class="modal-outline" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="edit-job-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Edit Job</h2>
+        <div class="modal-rule"></div>
+        <form class="modal-form">
+          <label>Job Title</label>
+          <input type="text" placeholder="Junior Software Developer" />
+          <div class="modal-grid">
+            <div>
+              <label>Job Type</label>
+              <select>
+                <option>Full Time</option>
+                <option>Part Time</option>
+                <option>Internship</option>
+                <option>Contract</option>
+              </select>
+            </div>
+            <div>
+              <label>Location</label>
+              <input type="text" placeholder="Kigali-RWANDA" />
+            </div>
+          </div>
+          <label>Required experience (years)</label>
+          <input type="text" placeholder="1.5" />
+          <label>Job Description</label>
+          <textarea rows="4" placeholder="Describe Your role, responsibilities, and requirements..."></textarea>
+          <div class="modal-actions">
+            <button class="modal-primary" type="submit">Post Job</button>
+            <button class="modal-outline" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="schedule-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Schedule Interview</h2>
+        <div class="modal-rule"></div>
+        <form class="modal-form">
+          <label>Interview Date</label>
+          <input type="text" placeholder="dd/mm/yyyy" />
+          <label>Interview Time</label>
+          <input type="text" placeholder="--:--" />
+          <label>Notes</label>
+          <textarea rows="3" placeholder="Add any notes about the interview"></textarea>
+          <div class="modal-actions">
+            <button class="modal-primary" type="submit">Confirm Schedule</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

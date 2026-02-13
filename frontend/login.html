@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExperiTrust — Login</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="auth-body">
+    <header class="auth-header">
+      <a class="logo" href="index.html"><img class="logo-icon" src="icons/Logo.png" alt="ExperiTrust logo" />ExperiTrust</a>
+    </header>
+
+    <main class="auth-main">
+      <section class="auth-card">
+        <h1>Login To Account</h1>
+        <p class="auth-subtitle">Enter Your Credentials to Access Your Account</p>
+
+        <button class="google-btn" type="button">
+          <span class="google-icon"></span>
+          Sign in with Google Account
+        </button>
+
+        <div class="divider"><span>Or</span></div>
+
+        <form class="auth-form">
+          <input type="email" placeholder="Enter email" />
+          <input type="password" placeholder="Enter a password" />
+          <a class="forgot-link" href="#">Forgot password</a>
+          <a class="primary-btn auth-submit" href="student-dashboard.html" data-target-student="student-dashboard.html" data-target-employer="employer-dashboard.html" data-target-admin="admin-dashboard.html">Sign In</a>
+        </form>
+
+        <div class="auth-links">
+          <span>Not a member?</span>
+          <a href="signup.html">Create an Account</a>
+          <a class="auth-right" href="index.html">Landing Page</a>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

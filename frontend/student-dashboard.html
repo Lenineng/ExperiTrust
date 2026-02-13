@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExperiTrust — Student Dashboard</title>
+    <link rel="stylesheet" href="/frontend/styles.css?v=2" />
+  </head>
+  <body class="dash-body">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <a class="logo dash-logo" href="index.html"><img class="logo-icon" src="icons/Logo.png" alt="ExperiTrust logo" />ExperiTrust</a>
+        <div class="dash-user">
+          <img class="dash-avatar" src="https://via.placeholder.com/48" alt="User avatar" />
+          <a class="dash-logout" href="login.html">LogOut</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="dash-main">
+      <section class="dash-hero">
+        <h1>Student Dashboard</h1>
+        <p>Manage your experiences and explore job opportunities</p>
+
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span>Total Experience</span>
+            <strong>2.5</strong>
+            <small>Years of Experience</small>
+          </div>
+          <div class="dash-stat">
+            <span>Verified Experiences</span>
+            <strong>2</strong>
+            <small>out of 4 submitted</small>
+          </div>
+          <div class="dash-stat">
+            <span>Applications</span>
+            <strong>2</strong>
+            <small>active applications</small>
+          </div>
+          <div class="dash-stat">
+            <span>Profile Completion</span>
+            <strong>85%</strong>
+            <small>Profile Completed</small>
+          </div>
+        </div>
+      </section>
+
+      <nav class="dash-tabs">
+        <button class="dash-tab active" data-tab="overview" data-icon="icons/overview.png" data-icon-active="icons/overview%202.png">
+          <img class="tab-icon" src="icons/overview%202.png" alt="" />
+          Overview
+        </button>
+        <button class="dash-tab" data-tab="experiences" data-icon="icons/my%20experience.png" data-icon-active="icons/my%20experience%202.png">
+          <img class="tab-icon" src="icons/my%20experience.png" alt="" />
+          My experiences
+        </button>
+        <button class="dash-tab" data-tab="jobs" data-icon="icons/job%20opportunities.png" data-icon-active="icons/job%20opportunities%202.png">
+          <img class="tab-icon" src="icons/job%20opportunities.png" alt="" />
+          Job Opportunities
+        </button>
+        <button class="dash-tab" data-tab="applications" data-icon="icons/my%20applications.png" data-icon-active="icons/applications%202.png">
+          <img class="tab-icon" src="icons/my%20applications.png" alt="" />
+          My Applications
+        </button>
+      </nav>
+
+      <section class="dash-panel dash-section active" data-section="overview">
+        <div class="dash-panel-left">
+          <h3>Personal Information</h3>
+          <div class="dash-info">
+            <div><span>University:</span> African Leadership University</div>
+            <div><span>Field of Study:</span> Software Engineering</div>
+            <div><span>Education Level:</span> Undergraduate- Year 3</div>
+            <div><span>Email:</span> Leninengf1@gmail.com</div>
+          </div>
+          <div class="dash-actions">
+            <button class="dash-btn primary" data-modal="experience-modal">Submit New Experience</button>
+            <button class="dash-btn outline" data-modal="profile-modal">Edit Profile</button>
+          </div>
+        </div>
+        <div class="dash-divider"></div>
+        <div class="dash-panel-right">
+          <h3>Experience Breakdown</h3>
+          <div class="dash-breakdown">
+            <div><span>Academic Projects:</span><strong>0.75 years</strong></div>
+            <div><span>Volunteering:</span><strong>0.5 years</strong></div>
+            <div><span>Internships:</span><strong>0 years</strong></div>
+            <div><span>Personal Projects:</span><strong>0 years</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dash-experiences dash-section" data-section="experiences" hidden>
+        <div class="dash-section-header">
+          <h2>All experiences</h2>
+          <button class="dash-btn primary small" data-modal="experience-modal">+ Submit Experiences</button>
+        </div>
+
+        <article class="experience-card">
+          <div>
+            <h4>Web Development Project</h4>
+            <p>Academic Project · 12 weeks</p>
+            <div class="experience-meta">
+              <div><span>Submitted:</span> 2026-01-15</div>
+              <div><span>Verified:</span> 2026-02-15</div>
+              <div><span>Equivalence:</span> <strong>0.75 years</strong></div>
+            </div>
+          </div>
+          <span class="status-pill verified">Verified</span>
+        </article>
+
+        <article class="experience-card">
+          <div>
+            <h4>Community Food Bank Volunteer</h4>
+            <p>Volunteering · 80 hours</p>
+            <div class="experience-meta">
+              <div><span>Submitted:</span> 2026-01-15</div>
+              <div><span>Verified:</span> 2026-02-15</div>
+              <div><span>Equivalence:</span> <strong>0.5 years</strong></div>
+            </div>
+          </div>
+          <span class="status-pill verified">Verified</span>
+        </article>
+
+        <article class="experience-card">
+          <div>
+            <h4>Mobile App Development</h4>
+            <p>Personal Project · 10 weeks</p>
+            <div class="experience-meta">
+              <div><span>Submitted:</span> 2026-01-15</div>
+              <div><span>Verified:</span> 2026-02-15</div>
+              <div><span>Equivalence:</span> <strong>0 years</strong></div>
+            </div>
+          </div>
+          <span class="status-pill pending">pending</span>
+        </article>
+
+        <article class="experience-card">
+          <div>
+            <h4>Marketing Internship</h4>
+            <p>Internship · 3 months</p>
+            <div class="experience-meta">
+              <div><span>Submitted:</span> 2026-01-15</div>
+              <div><span>Verified:</span> 2026-02-15</div>
+              <div><span>Equivalence:</span> <strong>0 years</strong></div>
+            </div>
+          </div>
+          <span class="status-pill rejected">Rejected</span>
+        </article>
+      </section>
+
+      <section class="dash-placeholder jobs dash-section" data-section="jobs" hidden>
+        <div class="dash-section-header jobs-header">
+          <h2>Available Job Opportunities</h2>
+          <label class="search-wrap">
+            <img class="tab-icon" src="icons/search.png" alt="" />
+            <input class="job-search" type="search" placeholder="Search Jobs" />
+          </label>
+        </div>
+
+        <article class="job-card" data-job>
+          <div class="job-main">
+            <div>
+              <h4>Junior Software Developer</h4>
+              <p>Tech Innovations Inc.</p>
+            </div>
+            <button class="apply-btn" data-modal="job-modal">Apply now</button>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Kigali</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Full-time</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 1.5 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Posted: 2026-01-10</span>
+            <span>24 applicants</span>
+            <button class="link-btn" data-modal="job-modal">View Details</button>
+          </div>
+        </article>
+
+        <article class="job-card" data-job>
+          <div class="job-main">
+            <div>
+              <h4>Frontend Developer Intern</h4>
+              <p>Digital Solutions Ltd</p>
+            </div>
+            <button class="apply-btn" data-modal="job-modal">Apply now</button>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Remote</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Internship</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 0.5 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Posted: 2026-01-10</span>
+            <span>24 applicants</span>
+            <button class="link-btn" data-modal="job-modal">View Details</button>
+          </div>
+        </article>
+
+        <article class="job-card" data-job>
+          <div class="job-main">
+            <div>
+              <h4>UX/UI Designer</h4>
+              <p>Creative Agency</p>
+            </div>
+            <button class="apply-btn" data-modal="job-modal">Apply now</button>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Kigali</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Full-time</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 2 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Posted: 2026-01-10</span>
+            <span>24 applicants</span>
+            <button class="link-btn" data-modal="job-modal">View Details</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="dash-placeholder applications dash-section" data-section="applications" hidden>
+        <div class="dash-section-header">
+          <h2>My Applications</h2>
+        </div>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Junior Software Developer</h4>
+              <p>Tech Innovations Inc.</p>
+            </div>
+            <span class="status-pill review">Under Review</span>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Kigali</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Full-time</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 1.5 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Applied: 2026-01-13</span>
+          </div>
+        </article>
+
+        <article class="job-card">
+          <div class="job-main">
+            <div>
+              <h4>Frontend Developer Intern</h4>
+              <p>Digital Solutions Ltd</p>
+            </div>
+            <span class="status-pill scheduled">Interview Scheduled</span>
+          </div>
+          <div class="job-meta">
+            <span><img class="meta-icon" src="icons/mi_location.png" alt="" /> Remote</span>
+            <span><img class="meta-icon" src="icons/calendar.png" alt="" /> Internship</span>
+            <span><img class="meta-icon" src="icons/time.png" alt="" /> Required: 0.5 years</span>
+          </div>
+          <div class="job-footer">
+            <span>Applied: 2026-01-13</span>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="experience-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>New experience</h2>
+        <div class="modal-rule"></div>
+
+        <form class="modal-form">
+          <label>Experience Title</label>
+          <input type="text" placeholder="e.g web development project" />
+
+          <label>Experience Type</label>
+          <select>
+            <option>Select Experience Type</option>
+            <option>Academic Project</option>
+            <option>Volunteering</option>
+            <option>Internship</option>
+            <option>Personal Project</option>
+          </select>
+
+          <div class="modal-grid">
+            <div>
+              <label>Start Date</label>
+              <input type="text" placeholder="dd/mm/yyyy" />
+            </div>
+            <div>
+              <label>End Date</label>
+              <input type="text" placeholder="dd/mm/yyyy" />
+            </div>
+          </div>
+
+          <div class="modal-grid">
+            <div>
+              <label>Duration</label>
+              <input type="text" placeholder="e.g 12" />
+            </div>
+            <div>
+              <label>Duration Unit</label>
+              <select>
+                <option>Hours</option>
+                <option>Days</option>
+                <option>Weeks</option>
+                <option>Months</option>
+              </select>
+            </div>
+          </div>
+
+          <label>Description</label>
+          <textarea rows="4" placeholder="Describe your role, responsibilities, and what you complished..."></textarea>
+
+          <label>Supporting Evidence</label>
+          <textarea rows="3" placeholder="List all supporting evidence (e.g Github links, Certificates, supervisor letters, documents)"></textarea>
+
+          <label>Upload your CV</label>
+          <input type="file" />
+
+          <div class="modal-note">
+            <strong>Verification Process</strong>
+            <p>Your experience will be reviewed by platform administrators. They will verify the authenticity of your submission and convert it to experience units based on established conversion rules. You will be noticed once the verification is complete.</p>
+          </div>
+
+          <div class="modal-actions">
+            <button class="modal-primary" type="submit">Submit for verification</button>
+            <button class="modal-outline" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="profile-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Edit Profile</h2>
+        <div class="modal-rule"></div>
+
+        <form class="modal-form">
+          <label>Full Name</label>
+          <input type="text" placeholder="Sarah Johnson" />
+
+          <label>Email</label>
+          <input type="email" placeholder="Sarah.Johnson@gmail.com" />
+
+          <label>University</label>
+          <input type="text" placeholder="African Leadership University" />
+
+          <label>Field of Study</label>
+          <input type="text" placeholder="Software Engineering" />
+
+          <div class="modal-actions">
+            <button class="modal-primary" type="submit">Save Changes</button>
+            <button class="modal-outline" type="button" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="job-modal">
+      <div class="modal-card">
+        <button class="modal-close" data-close>&times;</button>
+        <h2>Job Details</h2>
+        <div class="modal-rule"></div>
+
+        <div class="job-detail-header">
+          <h3>Junior Software Developer</h3>
+          <p>Tech Innovations Inc.</p>
+        </div>
+
+        <div class="job-detail-grid">
+          <div>
+            <span>Job Type:</span>
+            <strong>Full-time</strong>
+          </div>
+          <div>
+            <span>Duration:</span>
+            <strong>10 weeks</strong>
+          </div>
+          <div>
+            <span>Required Experience:</span>
+            <strong>1.5 years</strong>
+          </div>
+          <div>
+            <span>Posted Date:</span>
+            <strong>2026-01-10</strong>
+          </div>
+        </div>
+
+        <div class="job-detail-desc">
+          <h4>Job Description</h4>
+          <p>We are looking for a talented Junior Software Developer to join our team. The ideal candidate will have 1.5 years of relevant experience and a passion for innovation and excellence.</p>
+        </div>
+
+        <div class="job-detail-note">
+          <div>
+            <strong>Experience Required:</strong>
+            <p>✓ You meet the experience requirement</p>
+          </div>
+          <span>2.5 years</span>
+        </div>
+
+        <div class="modal-actions">
+          <button class="modal-primary" type="button">Apply now</button>
+          <button class="modal-outline" type="button" data-close>Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/frontend/script.js?v=2"></script>
+  </body>
+</html>

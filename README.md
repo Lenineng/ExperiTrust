@@ -18,8 +18,9 @@ use Live Server in VS Code
 
 ### Backend
 ```bash
-git clone https://github.com/your-username/experitrust-backend.git
-cd experitrust-backend
+git clone https://github.com/Lenineng/ExperiTrust.git
+cd experitrust
+cd backend
 npm install
 ```
 Create .env file and add:
@@ -56,3 +57,7 @@ Connected to MongoDB Atlas (Cloud Database)
 
 MongoDB Atlas (Free Cluster),
 Cloud-hosted database with secure access
+
+## Video Demo
+1st video ( 5 mins ) : https://www.loom.com/share/c5655a23f71c475a8f0d154a6d32dde4
+2nd video ( 2 mins ) continuation : https://www.loom.com/share/a26e05a9f5614a5292358b1353bfaf7d

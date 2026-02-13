@@ -42,17 +42,17 @@ please find a folder for some screenshots
 ## Deployment Plan
 ### Frontend Deployment
 
-Platform: Netlify (Free Tier)
-Connected to GitHub repository
+Platform: Netlify (Free Tier),
+Connected to GitHub repository,
 Auto-deploy on push to main branch
 
 ### Backend Deployment
 
-Platform: Render (Free Tier)
-Node.js server deployment
+Platform: Render (Free Tier),
+Node.js server deployment, 
 Connected to MongoDB Atlas (Cloud Database)
 
 ### Database
 
-MongoDB Atlas (Free Cluster)
+MongoDB Atlas (Free Cluster),
 Cloud-hosted database with secure access

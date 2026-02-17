@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExperiTrust - Employer Settings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dash-body">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <a class="logo dash-logo" href="index.html"><img class="logo-icon" src="icons/Logo.png" alt="ExperiTrust logo" />ExperiTrust</a>
+        <div class="dash-user">
+          <a class="dash-profile-link" href="employer-settings.html" aria-label="Open settings">
+            <div class="employer-initials">TI</div>
+          </a>
+          <a class="dash-logout" href="login.html">LogOut</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="settings-main">
+      <section class="settings-card">
+        <div class="settings-head">
+          <div class="settings-avatar">TI</div>
+          <div>
+            <p>Tech Innovations Inc.</p>
+            <span class="settings-email">hr@techinnovations.com</span>
+            <a class="settings-photo-link" href="#">Change profile photo</a>
+          </div>
+        </div>
+
+        <form class="settings-form">
+          <label for="employer-name">Full name</label>
+          <input id="employer-name" type="text" value="Tech Innovations Inc." />
+
+          <label for="employer-email">Email Address</label>
+          <input id="employer-email" type="email" value="hr@techinnovations.com" />
+
+          <label for="employer-location">Location</label>
+          <input id="employer-location" type="text" value="Kigali-RWANDA" />
+
+          <label for="employer-industry">Industry</label>
+          <input id="employer-industry" type="text" value="African Leadership University" />
+
+          <div class="settings-actions">
+            <button class="settings-cancel" type="button">Cancel</button>
+            <button class="settings-save" type="submit">Save Changes</button>
+          </div>
+          <p class="settings-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

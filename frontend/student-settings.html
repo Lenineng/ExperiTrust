@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExperiTrust - Student Settings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="dash-body">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <a class="logo dash-logo" href="index.html"><img class="logo-icon" src="icons/Logo.png" alt="ExperiTrust logo" />ExperiTrust</a>
+        <div class="dash-user">
+          <a class="dash-profile-link" href="student-settings.html" aria-label="Open settings">
+            <div class="employer-initials">LN</div>
+          </a>
+          <a class="dash-logout" href="login.html">LogOut</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="settings-main">
+      <section class="settings-card">
+        <div class="settings-head">
+          <div class="settings-avatar">LN</div>
+          <div>
+            <h1>Lenine NGENZI</h1>
+            <span class="settings-email">leninengf1@gmail.com</span>
+            <a class="settings-photo-link" href="#">Change profile photo</a>
+          </div>
+        </div>
+
+        <form class="settings-form">
+          <label for="student-name">Full name</label>
+          <input id="student-name" type="text" value="Lenine NGENZI" />
+
+          <label for="student-email">Email Address</label>
+          <input id="student-email" type="email" value="leninengf1@gmail.com" />
+
+          <label for="student-location">Location</label>
+          <input id="student-location" type="text" value="Kigali-RWANDA" />
+
+          <label for="student-university">University</label>
+          <input id="student-university" type="text" value="African Leadership University" />
+
+          <label for="student-field">Field of Study</label>
+          <input id="student-field" type="text" value="Software Engineering" />
+
+          <label for="student-level">Education Level</label>
+          <input id="student-level" type="text" value="Undergraduate- Year 3" />
+
+          <div class="settings-actions">
+            <button class="settings-cancel" type="button">Cancel</button>
+            <button class="settings-save" type="submit">Save Changes</button>
+          </div>
+          <p class="settings-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

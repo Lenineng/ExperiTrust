@@ -27,37 +27,32 @@ const userSchema = new mongoose.Schema(
     },
     profilePic: {
       type: String,
-      default: "",
+      trim: true,
     },
     location: {
       type: String,
-      default: "",
       trim: true,
     },
     university: {
       type: String,
-      default: "",
       trim: true,
     },
     fieldOfStudy: {
       type: String,
-      default: "",
       trim: true,
     },
     educationLevel: {
       type: String,
-      default: "",
       trim: true,
     },
     industry: {
       type: String,
-      default: "",
       trim: true,
     },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User",userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;

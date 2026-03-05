@@ -5,17 +5,17 @@ import cloudinary from "../lib/cloudinary.js";
 
 const allowedRoles = ["student", "employer", "admin"];
 
+const roleAllowedProfileFields = {
+  student: ["fullName", "email", "profilePic", "location", "university", "fieldOfStudy", "educationLevel"],
+  employer: ["fullName", "email", "profilePic", "location", "industry"],
+  admin: ["fullName", "email", "profilePic", "location"],
+};
+
 const buildUserResponse = (userDoc) => ({
   _id: userDoc._id,
   fullName: userDoc.fullName,
   email: userDoc.email,
   role: userDoc.role,
-  profilePic: userDoc.profilePic,
-  location: userDoc.location,
-  university: userDoc.university,
-  fieldOfStudy: userDoc.fieldOfStudy,
-  educationLevel: userDoc.educationLevel,
-  industry: userDoc.industry,
 });
 
 export const signup=async(req, res)=>{
@@ -92,28 +92,24 @@ export const logout=(req, res)=>{
 export const updateProfile=async(req, res)=>{
   try {
     const userId = req.user._id;
-    const {
-      fullName,
-      email,
-      location,
-      university,
-      fieldOfStudy,
-      educationLevel,
-      industry,
-      profilePic,
-    } = req.body;
-
+    const allowedFields = roleAllowedProfileFields[req.user.role] || ["fullName", "email", "profilePic"];
     const updates = {};
 
-    if (typeof fullName === "string") updates.fullName = fullName.trim();
-    if (typeof location === "string") updates.location = location.trim();
-    if (typeof university === "string") updates.university = university.trim();
-    if (typeof fieldOfStudy === "string") updates.fieldOfStudy = fieldOfStudy.trim();
-    if (typeof educationLevel === "string") updates.educationLevel = educationLevel.trim();
-    if (typeof industry === "string") updates.industry = industry.trim();
+    const assignTrimmedIfAllowed = (field) => {
+      if (allowedFields.includes(field) && typeof req.body[field] === "string") {
+        updates[field] = req.body[field].trim();
+      }
+    };
 
-    if (typeof email === "string") {
-      const normalizedEmail = email.trim().toLowerCase();
+    assignTrimmedIfAllowed("fullName");
+    assignTrimmedIfAllowed("location");
+    assignTrimmedIfAllowed("university");
+    assignTrimmedIfAllowed("fieldOfStudy");
+    assignTrimmedIfAllowed("educationLevel");
+    assignTrimmedIfAllowed("industry");
+
+    if (allowedFields.includes("email") && typeof req.body.email === "string") {
+      const normalizedEmail = req.body.email.trim().toLowerCase();
       const duplicateEmail = await User.findOne({
         email: normalizedEmail,
         _id: { $ne: userId },
@@ -125,12 +121,12 @@ export const updateProfile=async(req, res)=>{
       updates.email = normalizedEmail;
     }
 
-    if (typeof profilePic === "string" && profilePic.trim()) {
-      if (profilePic.startsWith("data:image")) {
-        const uploadResponse = await cloudinary.uploader.upload(profilePic);
+    if (allowedFields.includes("profilePic") && typeof req.body.profilePic === "string" && req.body.profilePic.trim()) {
+      if (req.body.profilePic.startsWith("data:image")) {
+        const uploadResponse = await cloudinary.uploader.upload(req.body.profilePic);
         updates.profilePic = uploadResponse.secure_url;
       } else {
-        updates.profilePic = profilePic;
+        updates.profilePic = req.body.profilePic.trim();
       }
     }
 

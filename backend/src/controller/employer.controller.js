@@ -39,13 +39,17 @@ export const createJob = async (req, res) => {
     if (!title || !jobType || !location || requiredExperienceYears === undefined || !description) {
       return res.status(400).json({ message: "Missing required fields" });
     }
+    const years = Number(requiredExperienceYears);
+    if (Number.isNaN(years) || years < 0) {
+      return res.status(400).json({ message: "requiredExperienceYears must be a number >= 0" });
+    }
 
     const job = await Job.create({
       employer: req.user._id,
       title,
       jobType,
       location,
-      requiredExperienceYears,
+      requiredExperienceYears: years,
       description,
       status: "open",
     });

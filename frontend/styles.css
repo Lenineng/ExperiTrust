@@ -288,10 +288,28 @@ img{max-width:100%;display:block}
   .settings-form label{font-size:18px}
   .settings-actions{flex-direction:column}
   .settings-cancel,.settings-save{flex:1;width:100%}
+  .dash-main{padding:16px}
+  .dash-hero{padding:20px}
+  .dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dash-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dash-panel{grid-template-columns:1fr;gap:14px}
+  .dash-divider{display:none}
+  .applicant-breakdown{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .student-right,.applicant-right{position:static;align-items:flex-start;margin-top:10px}
+  .search-grid{grid-template-columns:1fr}
+  .modal-grid{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .nav{display:none}
   .nav-toggle{display:block}
   .hero h1{font-size:2rem}
   .stats{flex-direction:column;align-items:flex-start}
+  .dash-stats{grid-template-columns:1fr}
+  .dash-tabs{grid-template-columns:1fr}
+  .dash-actions,.modal-actions,.applicant-actions,.settings-actions{grid-template-columns:1fr;flex-direction:column}
+  .dash-header{padding:14px 16px 0}
+  .dash-main{padding:12px}
+  .job-main,.job-footer,.dash-section-header,.applicant-footer{flex-direction:column;align-items:flex-start}
+  .applicant-breakdown{grid-template-columns:1fr}
+  .settings-head{flex-direction:column}
 }

@@ -50,6 +50,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const ensureToastRoot = () => {
+    let root = document.getElementById("toast-root");
+    if (root) return root;
+    root = document.createElement("div");
+    root.id = "toast-root";
+    root.style.position = "fixed";
+    root.style.top = "18px";
+    root.style.right = "18px";
+    root.style.display = "grid";
+    root.style.gap = "10px";
+    root.style.zIndex = "9999";
+    document.body.appendChild(root);
+    return root;
+  };
+
+  const showToast = (message, type = "info") => {
+    const root = ensureToastRoot();
+    const toast = document.createElement("div");
+    toast.textContent = message;
+    toast.style.minWidth = "240px";
+    toast.style.maxWidth = "360px";
+    toast.style.padding = "10px 12px";
+    toast.style.borderRadius = "10px";
+    toast.style.fontSize = "13px";
+    toast.style.color = "#fff";
+    toast.style.boxShadow = "0 8px 20px rgba(0,0,0,.18)";
+    toast.style.background =
+      type === "error" ? "#b42318" : type === "success" ? "#067647" : "#1d3d86";
+    root.appendChild(toast);
+    setTimeout(() => {
+      toast.remove();
+    }, 2800);
+  };
+
   const fetchJson = async (endpoint, options = {}) => {
     const response = await fetch(`${API_BASE}${endpoint}`, {
       credentials: "include",
@@ -328,10 +362,10 @@ document.addEventListener("DOMContentLoaded", () => {
               method: "POST",
               body: JSON.stringify({ jobId, notes }),
             });
-            alert("Application submitted");
+            showToast("Application submitted", "success");
             window.location.reload();
           } catch (error) {
-            alert(error.message);
+            showToast(error.message, "error");
           }
         });
       });
@@ -383,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           window.location.reload();
         } catch (error) {
-          alert(error.message);
+          showToast(error.message, "error");
         } finally {
           setLoading(submitBtn, false);
         }
@@ -437,9 +471,10 @@ document.addEventListener("DOMContentLoaded", () => {
           const id = btn.getAttribute("data-close-job-id");
           try {
             await authFetch(`/employer/jobs/${id}/close`, { method: "PATCH" });
+            showToast("Job closed", "success");
             window.location.reload();
           } catch (error) {
-            alert(error.message);
+            showToast(error.message, "error");
           }
         });
       });
@@ -486,9 +521,10 @@ document.addEventListener("DOMContentLoaded", () => {
               method: "PATCH",
               body: JSON.stringify({ status }),
             });
+            showToast("Application updated", "success");
             window.location.reload();
           } catch (error) {
-            alert(error.message);
+            showToast(error.message, "error");
           }
         });
       });
@@ -506,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scheduleForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!selectedApplicationId) {
-          alert("Pick an application first");
+          showToast("Pick an application first", "error");
           return;
         }
         const fields = scheduleForm.querySelectorAll("input, textarea");
@@ -524,9 +560,10 @@ document.addEventListener("DOMContentLoaded", () => {
               notes,
             }),
           });
+          showToast("Interview scheduled", "success");
           window.location.reload();
         } catch (error) {
-          alert(error.message);
+          showToast(error.message, "error");
         } finally {
           setLoading(submitBtn, false);
         }
@@ -544,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const requiredExperienceYears = Number(fields[3]?.value?.trim());
 
         if (Number.isNaN(requiredExperienceYears) || requiredExperienceYears < 0) {
-          alert("Required experience must be a valid number (e.g 1 or 1.5)");
+          showToast("Required experience must be a valid number (e.g 1 or 1.5)", "error");
           return;
         }
 
@@ -560,9 +597,10 @@ document.addEventListener("DOMContentLoaded", () => {
               description: fields[4]?.value?.trim(),
             }),
           });
+          showToast("Job posted", "success");
           window.location.reload();
         } catch (error) {
-          alert(error.message);
+          showToast(error.message, "error");
         } finally {
           setLoading(submitBtn, false);
         }
@@ -672,7 +710,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (verifyBtn) {
       verifyBtn.addEventListener("click", async () => {
-        if (!selectedExperienceId) return alert("Select an experience to verify");
+        if (!selectedExperienceId) {
+          showToast("Select an experience to verify", "error");
+          return;
+        }
         try {
           await authFetch(`/admin/experiences/${selectedExperienceId}/verify`, {
             method: "PATCH",
@@ -681,24 +722,29 @@ document.addEventListener("DOMContentLoaded", () => {
               adminNotes: notesInput?.value || "",
             }),
           });
+          showToast("Experience verified", "success");
           window.location.reload();
         } catch (error) {
-          alert(error.message);
+          showToast(error.message, "error");
         }
       });
     }
 
     if (rejectBtn) {
       rejectBtn.addEventListener("click", async () => {
-        if (!selectedExperienceId) return alert("Select an experience to reject");
+        if (!selectedExperienceId) {
+          showToast("Select an experience to reject", "error");
+          return;
+        }
         try {
           await authFetch(`/admin/experiences/${selectedExperienceId}/reject`, {
             method: "PATCH",
             body: JSON.stringify({ adminNotes: notesInput?.value || "" }),
           });
+          showToast("Experience rejected", "success");
           window.location.reload();
         } catch (error) {
-          alert(error.message);
+          showToast(error.message, "error");
         }
       });
     }

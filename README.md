@@ -1,63 +1,80 @@
 # ExperiTrust
 
-## Description
-ExperiTrust is a digital platform designed to help undergraduates transform academic, volunteer, and project-based activities into verified and measurable work experience and get to apply to job opportunities. 
-The platform introduces a structured verification system that allows employers to objectively evaluate graduate readiness beyond traditional CVs. ExperiTrust bridges the gap between education and employment by creating a trusted, transparent experience validation process.
+ExperiTrust is a role-based platform for students, employers, and admins to manage verified experience and hiring workflows.
 
-## GitHub Repository
+## Stack
+- Backend: Node.js, Express, MongoDB (Mongoose), JWT cookie auth
+- Frontend: HTML/CSS/vanilla JS
+
+## Local Setup
+
+### 1. Backend
 ```bash
-https://github.com/Lenineng/ExperiTrust.git
-```
-
-## How to Set Up the Environment and Project
-### Frontend
-``` bash
-cd experitrust-frontend
-```
-use Live Server in VS Code
-
-### Backend
-```bash
-git clone https://github.com/Lenineng/ExperiTrust.git
-cd experitrust
 cd backend
 npm install
 ```
-Create .env file and add:
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-```
-Run Backend Server
+
+Create `.env` from `backend/.env.example`.
+
+Run backend:
 ```bash
 npm run dev
 ```
-## Figma Mockups
+
+### 2. Frontend
+Open `frontend/` with Live Server (VS Code) or any local static server.
+
+## Environment Variables
+Use `backend/.env.example` as reference.
+
+Important keys:
+- `MONGODB_URI` (required)
+- `JWT_SECRET` (required)
+- `ALLOWED_ORIGINS` (required for browser API calls with cookies)
+
+## Security Notes
+- Helmet enabled
+- Rate limiting enabled globally and stricter on `/api/auth`
+- CORS controlled through `ALLOWED_ORIGINS`
+
+## Admin Seeding
+Set in `.env`:
+- `ADMIN_FULL_NAME`
+- `ADMIN_EMAIL`
+- `ADMIN_PASSWORD`
+
+Run:
+```bash
+cd backend
+npm run seed:admin
 ```
-https://www.figma.com/design/OtvUJceeilcPUilRI4cAEe/ExperiTrust?node-id=0-1&p=f&t=MUxBUenoVVA5g5tO-0
+
+## Tests
+Backend integration tests:
+```bash
+cd backend
+npm test
 ```
-## Screenshots
-please find a folder for some screenshots
 
-## Deployment Plan
-### Frontend Deployment
+Frontend smoke tests:
+```bash
+node --test frontend/test/smoke.test.js
+```
 
-Platform: Netlify (Free Tier),
-Connected to GitHub repository,
-Auto-deploy on push to main branch
+## CI
+GitHub Actions workflow:
+- `.github/workflows/ci.yml`
+- runs backend tests and frontend smoke tests on push/PR to `main`
 
-### Backend Deployment
+## API Base
+Frontend defaults to:
+- `http://<current-host>:5001/api`
 
-Platform: Render (Free Tier),
-Node.js server deployment, 
-Connected to MongoDB Atlas (Cloud Database)
+You can override in browser console:
+```js
+localStorage.setItem("experitrust_api_base", "http://localhost:5001/api")
+```
 
-### Database
-
-MongoDB Atlas (Free Cluster),
-Cloud-hosted database with secure access
-
-## Video Demo
-1st video ( 5 mins ) : https://www.loom.com/share/c5655a23f71c475a8f0d154a6d32dde4
-2nd video ( 2 mins ) continuation : https://www.loom.com/share/a26e05a9f5614a5292358b1353bfaf7d
+## Existing Assets
+- Figma: https://www.figma.com/design/OtvUJceeilcPUilRI4cAEe/ExperiTrust?node-id=0-1&p=f&t=MUxBUenoVVA5g5tO-0
+- Demo videos and screenshots are kept in the repo.

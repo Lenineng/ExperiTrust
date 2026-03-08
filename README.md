@@ -22,8 +22,9 @@ npm run dev
 ```
 
 ### 2. Frontend
-Open `frontend/` with Live Server (VS Code) or any local static server.
-
+```bash
+https://experitrust.netlify.app
+```
 ## Environment Variables
 Use `backend/.env.example` as reference.
 
@@ -77,6 +78,9 @@ localStorage.setItem("experitrust_api_base", "http://localhost:5001/api")
 
 ## Existing Assets
 - Figma: https://www.figma.com/design/OtvUJceeilcPUilRI4cAEe/ExperiTrust?node-id=0-1&p=f&t=MUxBUenoVVA5g5tO-0
-- Demo videos: 1:https://www.loom.com/share/b9b7e347cc14491a811d0b3a3ac2a22f
-- 2: https://www.loom.com/share/9ca5ecea500c488580206af7fd494d54
+- Demo videos:
+- ```bash
+   1:https://www.loom.com/share/b9b7e347cc14491a811d0b3a3ac2a22f
+  2: https://www.loom.com/share/9ca5ecea500c488580206af7fd494d54
+  ```
 -   and screenshots are kept in the repo.

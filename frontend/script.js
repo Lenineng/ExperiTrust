@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const API_BASE = localStorage.getItem("experitrust_api_base") || defaultApiBase;
   const path = window.location.pathname.toLowerCase();
 
-  const isLoginPage = path.endsWith("login.html");
-  const isSignupPage = path.endsWith("signup.html");
-  const isDashboardPage = path.includes("-dashboard.html");
-  const isSettingsPage = path.includes("-settings.html");
+  const isLoginPage = path.endsWith("login.html") || path.endsWith("/login");
+  const isSignupPage = path.endsWith("signup.html") || path.endsWith("/signup");
+  const isDashboardPage = path.includes("-dashboard.html") || path.includes("-dashboard");
+  const isSettingsPage = path.includes("-settings.html") || path.includes("-settings");
 
   const roleFromPath = () => {
     if (path.includes("student-")) return "student";
@@ -848,3 +848,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+

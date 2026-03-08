@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const defaultApiBase = `${window.location.protocol}//${window.location.hostname}:5001/api`;
   const API_BASE = localStorage.getItem("experitrust_api_base") || defaultApiBase;
+  const AUTH_TOKEN_KEY = "experitrust_auth_token";
   const path = window.location.pathname.toLowerCase();
 
   const isLoginPage = path.endsWith("login.html") || path.endsWith("/login");
@@ -89,6 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        ...(localStorage.getItem(AUTH_TOKEN_KEY)
+          ? { Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}` }
+          : {}),
         ...(options.headers || {}),
       },
       ...options,
@@ -166,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify({ fullName: name, email, password, role }),
           });
 
+          if (user?.token) localStorage.setItem(AUTH_TOKEN_KEY, user.token);
           setMessage("Account created successfully");
           redirectToRoleDashboard(user.role || role);
           return;
@@ -178,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({ email, password }),
         });
 
+        if (user?.token) localStorage.setItem(AUTH_TOKEN_KEY, user.token);
         setMessage("Login successful");
         redirectToRoleDashboard(user.role);
       } catch (error) {
@@ -197,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (_) {
           // ignore
         }
+        localStorage.removeItem(AUTH_TOKEN_KEY);
         window.location.href = "login.html";
       });
     });
@@ -848,4 +855,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 

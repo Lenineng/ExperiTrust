@@ -185,6 +185,9 @@ img{max-width:100%;display:block}
 .status-pill.rejected{background:#ffe3dd;color:#c23b2a}
 .status-pill.review{background:#e7f0ff;color:#1d3d86}
 .status-pill.scheduled{background:#e7f8ec;color:#1b8a3b}
+.status-pill.under-review{background:#e7f0ff;color:#1d3d86}
+.status-pill.shortlisted{background:#e7f8ec;color:#1b8a3b}
+.status-pill.interview-scheduled{background:#fff6cc;color:#b07a00}
 
 .activity-list{display:grid;gap:16px}
 .activity-item{display:flex;gap:12px;align-items:flex-start}

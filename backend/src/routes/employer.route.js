@@ -13,6 +13,7 @@ import {
   getApplicants,
   getEmployerDashboard,
   getEmployerJobs,
+  getInterviewByApplicationForEmployer,
   scheduleInterview,
   searchCandidates,
   updateApplicationStatus,
@@ -33,6 +34,7 @@ router.patch("/jobs/:id/close", validateObjectIdParam("id"), closeJob);
 router.get("/applicants", getApplicants);
 router.patch("/applications/:id/status", validateObjectIdParam("id"), validateApplicationStatus, updateApplicationStatus);
 router.post("/interviews", validateScheduleInterview, scheduleInterview);
+router.get("/interviews/:applicationId", validateObjectIdParam("applicationId"), getInterviewByApplicationForEmployer);
 
 router.get("/candidates/search", searchCandidates);
 

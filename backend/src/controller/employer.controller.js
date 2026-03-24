@@ -186,6 +186,35 @@ export const scheduleInterview = async (req, res) => {
   }
 };
 
+export const getInterviewByApplicationForEmployer = async (req, res) => {
+  try {
+    const { applicationId } = req.params;
+
+    const interview = await Interview.findOne({
+      application: applicationId,
+      employer: req.user._id,
+      status: "scheduled",
+    })
+      .populate({
+        path: "application",
+        populate: [
+          { path: "job", select: "title" },
+          { path: "student", select: "fullName email" },
+        ],
+      })
+      .sort({ createdAt: -1 });
+
+    if (!interview) {
+      return res.status(404).json({ message: "Interview not found" });
+    }
+
+    res.status(200).json(interview);
+  } catch (error) {
+    console.error("Error in getInterviewByApplicationForEmployer:", error.message);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const searchCandidates = async (req, res) => {
   try {
     const { fieldOfStudy, university, minExperience } = req.query;

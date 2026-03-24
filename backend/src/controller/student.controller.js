@@ -1,6 +1,7 @@
 import Experience from "../models/experience.model.js";
 import Job from "../models/job.model.js";
 import Application from "../models/application.model.js";
+import Interview from "../models/interview.model.js";
 
 const sumExperience = (experiences) =>
   experiences.reduce((sum, item) => sum + (item.equivalenceYears || 0), 0);
@@ -136,6 +137,32 @@ export const getMyApplications = async (req, res) => {
     res.status(200).json(applications);
   } catch (error) {
     console.error("Error in getMyApplications:", error.message);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getMyApplicationInterview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const application = await Application.findOne({ _id: id, student: req.user._id });
+    if (!application) return res.status(404).json({ message: "Application not found" });
+
+    const interview = await Interview.findOne({
+      application: application._id,
+      student: req.user._id,
+      status: "scheduled",
+    })
+      .populate({
+        path: "application",
+        populate: [{ path: "job", select: "title" }, { path: "employer", select: "fullName email" }],
+      })
+      .sort({ createdAt: -1 });
+
+    if (!interview) return res.status(404).json({ message: "Interview not found" });
+
+    res.status(200).json(interview);
+  } catch (error) {
+    console.error("Error in getMyApplicationInterview:", error.message);
     res.status(500).json({ message: "Internal server error" });
   }
 };

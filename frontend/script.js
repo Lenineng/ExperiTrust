@@ -235,8 +235,10 @@ document.addEventListener("DOMContentLoaded", () => {
           const passwords = form.querySelectorAll('input[type="password"]');
           const password = passwords[0]?.value || "";
           const confirm = passwords[1]?.value || "";
+          const termsAccepted = form.querySelector("#terms-consent")?.checked;
           const role = document.querySelector(".role-tab.active")?.getAttribute("data-role") || "student";
 
+          if (!termsAccepted) throw new Error("Please accept the EULA and Privacy Policy");
           if (password !== confirm) throw new Error("Passwords do not match");
 
           const user = await fetchJson("/auth/signup", {

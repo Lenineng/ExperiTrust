@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const isSignupPage = path.endsWith("signup.html") || path.endsWith("/signup");
   const isDashboardPage = path.includes("-dashboard.html") || path.includes("-dashboard");
   const isSettingsPage = path.includes("-settings.html") || path.includes("-settings");
+  const isProtectedPage = isDashboardPage || isSettingsPage;
 
   const roleFromPath = () => {
     if (path.includes("student-")) return "student";
@@ -26,6 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const redirectToRoleDashboard = (role) => {
     window.location.href = dashboardRoutes[role] || "login.html";
+  };
+
+  const revealProtectedPage = () => {
+    if (isProtectedPage) {
+      document.body.classList.remove("auth-pending");
+    }
   };
 
   const createInlineMessage = (container) => {
@@ -117,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       return await fetchJson(endpoint, options);
     } catch (error) {
-      if (error.status === 401 && (isDashboardPage || isSettingsPage)) {
+      if (error.status === 401 && isProtectedPage) {
         window.location.href = `login.html${pageRole ? `?role=${pageRole}` : ""}`;
       }
       throw error;
@@ -820,6 +827,9 @@ document.addEventListener("DOMContentLoaded", () => {
       clearSectionCards(applicantsSection, ".applicant-card");
       applicants.forEach((app) => {
         const statusUi = getApplicationStatusUi(app.status);
+        const canShortlist = app.status !== "rejected" && app.status !== "interview_scheduled";
+        const canReject = app.status !== "rejected";
+        const canScheduleInterview = app.status !== "rejected" && app.status !== "interview_scheduled";
         const card = document.createElement("article");
         card.className = "applicant-card";
         card.innerHTML = `
@@ -838,9 +848,21 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="applicant-footer">
             <span>Applied: ${new Date(app.createdAt).toISOString().slice(0, 10)}</span>
             <div class="applicant-actions">
-              <button class="modal-primary small" type="button" data-update-app="${app._id}" data-status="shortlisted">Shortlist</button>
-              <button class="modal-outline small danger" type="button" data-update-app="${app._id}" data-status="rejected">Reject</button>
-              <button class="modal-primary small" type="button" data-modal="schedule-modal" data-pick-application="${app._id}">Schedule Interview</button>
+              ${
+                canShortlist
+                  ? `<button class="modal-primary small" type="button" data-update-app="${app._id}" data-status="shortlisted">Shortlist</button>`
+                  : ""
+              }
+              ${
+                canReject
+                  ? `<button class="modal-outline small danger" type="button" data-update-app="${app._id}" data-status="rejected">Reject</button>`
+                  : ""
+              }
+              ${
+                canScheduleInterview
+                  ? `<button class="modal-primary small" type="button" data-modal="schedule-modal" data-pick-application="${app._id}">Schedule Interview</button>`
+                  : ""
+              }
               ${
                 app.status === "interview_scheduled"
                   ? `<button class="modal-outline small" type="button" data-view-employer-interview="${app._id}">View Details</button>`
@@ -1371,6 +1393,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isSettingsPage) {
       await bindSettingsForm(user);
     }
+
+    revealProtectedPage();
   };
 
   bindRoleTabs();
@@ -1380,7 +1404,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  if (isDashboardPage || isSettingsPage) {
+  if (isProtectedPage) {
     bootProtectedPage().catch(() => {
       window.location.href = `login.html${pageRole ? `?role=${pageRole}` : ""}`;
     });

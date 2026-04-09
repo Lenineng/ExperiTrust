@@ -166,6 +166,18 @@ export const scheduleInterview = async (req, res) => {
 
     const application = await Application.findOne({ _id: applicationId, employer: req.user._id });
     if (!application) return res.status(404).json({ message: "Application not found" });
+    if (application.status === "rejected") {
+      return res.status(400).json({ message: "Cannot schedule an interview for a rejected application" });
+    }
+
+    const existingInterview = await Interview.findOne({
+      application: application._id,
+      employer: req.user._id,
+      status: "scheduled",
+    });
+    if (existingInterview) {
+      return res.status(400).json({ message: "Interview already scheduled for this application" });
+    }
 
     const interview = await Interview.create({
       application: application._id,

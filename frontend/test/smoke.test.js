@@ -24,3 +24,27 @@ test("frontend script targets backend API", () => {
   assert.match(script, /\/auth\/signup/);
 });
 
+test("protected frontend pages stay hidden until auth succeeds", () => {
+  const protectedPages = [
+    "frontend/student-dashboard.html",
+    "frontend/employer-dashboard.html",
+    "frontend/admin-dashboard.html",
+    "frontend/student-settings.html",
+    "frontend/employer-settings.html",
+    "frontend/admin-settings.html",
+  ];
+
+  protectedPages.forEach((filePath) => {
+    const html = read(filePath);
+    assert.match(html, /class="[^"]*auth-pending[^"]*"/i);
+  });
+});
+
+test("date-based forms use native date and time inputs", () => {
+  const studentDashboard = read("frontend/student-dashboard.html");
+  const employerDashboard = read("frontend/employer-dashboard.html");
+
+  assert.match(studentDashboard, /<input type="date" \/>/i);
+  assert.match(employerDashboard, /<input type="date" \/>/i);
+  assert.match(employerDashboard, /<input type="time" \/>/i);
+});
